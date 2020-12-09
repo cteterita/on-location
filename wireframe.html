@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Stylesheets -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="wireframe-style.css" rel="stylesheet" type="text/css" />
+    <title>On Location</title>
+  </head>
+  <body>
+  <!---Landing Page-->
+    <header>
+      <h1>On Location</h1>
+    </header>
+    <main>
+      <h3>Where are you going?</h3>
+      <p>Search for books, movies, and TV shows to take you away to your favorite destinations.</p>
+      <form id="main-search">
+        <div class="main-search-bar">
+          <input id="location" value="San Francisco" />
+          <button id="search" type="submit">Search</button>
+        </div>
+      </form>
+    </main>
+    <footer>
+      (c) 2020 Claire Teter Lesh - About - Send Feedback
+    </footer>
+  <!---Result Page-->
+    <header>
+      <h1>On Location</h1>
+    </header>
+    <main>
+      <div class="search-map-holder">
+        <form id="main-search">
+          <div class="main-search-bar">
+            <input id="location" value="San Francisco" />
+            <button id="search" type="submit">Search</button>
+          </div>
+          <div class="filter-holder">
+            <select id="media-type">
+              <option value="all">Media Types</option>
+              <option value="movies">Movies</option>
+              <option value="books">Books</option>
+              <option value="tv-shows">TV Shows</option>
+            </select>
+            <select id="tags">
+              <option value="all">Select Tags</option>
+              <option value="movies">Movies</option>
+              <option value="books">Books</option>
+              <option value="tv-shows">TV Shows</option>
+            </select>
+          </div>
+        </form>
+        <div id="map">
+          I'm a map!
+        </div>
+      </div>
+      <div class="results-holder">
+        <h3>Home Alone 3: Lost in New York</h3>
+        <p>&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+        <div>
+          <p>
+            This is a description of the movie Home Alone 3: Lost in New York.
+          </p>
+          <p>
+            It's about terrible parenting. Full disclosure, I haven't actually
+            seen it.
+          </p>
+        </div>
+        <p>Tags: Good for Kids, Christmas</p>
+        <a href="http://www.google.com" target="_blank">Watch it on Netflix</a>
+      </div>
+    </main>
+    <footer>
+      (c) 2020 Claire Teter Lesh - About - Send Feedback
+    </footer>
+  <!---Admin Page-->
+    <header>
+      <h1>On Location</h1>
+    </header>
+    <main>
+      **Insert Admin Page**
+    </main>
+    <footer>
+      (c) 2020 Claire Teter Lesh - About - Send Feedback
+    </footer>
+  </body>
+</html>
