@@ -39,9 +39,13 @@ button#search {
   display: flex;
   justify-content: flex-end;
 }
+#review-form {
+  display: flex;
+  flex-direction: column;
+}
 
 /* Map Style */
-#map {
+.map {
   background-color: palegreen;
   margin: 10px 0px;
   padding: 10px;
@@ -52,4 +56,14 @@ button#search {
 /* Result Style */
 .result-holder {
   padding: 10px;
+}
+
+
+/* Layout for Desktop */
+
+@media all and (min-width: 800px) {
+  .map-result-holder {
+    display: flex;
+    flex-direction: row;
+  }
 }

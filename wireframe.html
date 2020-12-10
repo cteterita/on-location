@@ -36,7 +36,6 @@
       <h1>On Location</h1>
     </header>
     <main>
-      <div class="search-map-holder">
         <form id="main-search">
           <div class="main-search-bar">
             <input id="location" value="San Francisco" />
@@ -57,24 +56,25 @@
             </select>
           </div>
         </form>
-        <div id="map">
+      <div class="map-result-holder">
+        <div class="map">
           I'm a map!
         </div>
-      </div>
-      <div class="results-holder">
-        <h3>Home Alone 3: Lost in New York</h3>
-        <p>&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-        <div>
-          <p>
-            This is a description of the movie Home Alone 3: Lost in New York.
-          </p>
-          <p>
-            It's about terrible parenting. Full disclosure, I haven't actually
-            seen it.
-          </p>
+        <div class="result-holder">
+          <h3>Home Alone 3: Lost in New York</h3>
+          <p>&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+          <div>
+            <p>
+              This is a description of the movie Home Alone 3: Lost in New York.
+            </p>
+            <p>
+              It's about terrible parenting. Full disclosure, I haven't actually
+              seen it.
+            </p>
+          </div>
+          <p>Tags: Good for Kids, Christmas</p>
+          <a href="http://www.google.com" target="_blank">Watch it on Netflix</a>
         </div>
-        <p>Tags: Good for Kids, Christmas</p>
-        <a href="http://www.google.com" target="_blank">Watch it on Netflix</a>
       </div>
     </main>
     <footer>
@@ -85,7 +85,26 @@
       <h1>On Location</h1>
     </header>
     <main>
-      **Insert Admin Page**
+      <form id="review-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" />
+        <label for="rating">Star Rating</label>
+        <select id="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <label for="tags">Tags</label>
+        <input type="text" id="tags" />
+        <label for="name">Link</label>
+        <input type="text" id="Link" />
+        <label for="description">Description</label>
+        <textarea id="description"></textarea>
+        <button type="submit">Save</button>
+        <button type="button">Delete</button>
+      </form>
     </main>
     <footer>
       (c) 2020 Claire Teter Lesh - About - Send Feedback
