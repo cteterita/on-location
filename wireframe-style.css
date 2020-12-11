@@ -1,27 +1,27 @@
 body {
-    width: 90%;
-    max-width: 800px;
-    margin: auto;
-    background-color: #aaaaaa;
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+  background-color: #aaa;
 }
 
-header, footer {
-    text-align: center;
-    margin: 10px;
-    padding: 10px;
-    background-color: #dddddd;
+header,
+footer {
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  background-color: #ddd;
 }
 
 main {
-    margin: auto;
-    overflow: hidden;
-    margin: 10px;
-    padding: 15px;
-    font-size: 16px;
-    line-height: 20px;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
+  margin: auto 10px;
+  overflow: hidden;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Form Styles */
@@ -29,16 +29,20 @@ main {
   display: flex;
   flex-direction: row;
 }
+
 input#location {
   flex: 8;
 }
+
 button#search {
   flex: 1;
 }
+
 .filter-holder {
   display: flex;
   justify-content: flex-end;
 }
+
 #review-form {
   display: flex;
   flex-direction: column;
@@ -47,7 +51,7 @@ button#search {
 /* Map Style */
 .map {
   background-color: palegreen;
-  margin: 10px 0px;
+  margin: 10px 0;
   padding: 10px;
   min-height: 200px;
   min-width: 200px;
@@ -57,7 +61,6 @@ button#search {
 .result-holder {
   padding: 10px;
 }
-
 
 /* Layout for Desktop */
 
