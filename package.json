@@ -36,6 +36,9 @@
       ]
     }
   },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -49,6 +52,8 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^18.2.1"
+    "eslint-config-airbnb": "^18.2.1",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0"
   }
 }
