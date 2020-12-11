@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -6,9 +7,11 @@ function App() {
       <header>
         <h1>On Location</h1>
       </header>
-      <div>
-        {/* content goes here */}
-      </div>
+      <section className="main">
+        <Switch>
+          <Route path="/" />
+        </Switch>
+      </section>
       <footer>
         (c) 2020 Claire Teter Lesh - About - Send Feedback
       </footer>
