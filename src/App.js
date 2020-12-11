@@ -1,6 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import Landing from './Landing/Landing';
+
 function App() {
   return (
     <main className="app">
@@ -9,7 +11,7 @@ function App() {
       </header>
       <section className="main">
         <Switch>
-          <Route path="/" />
+          <Route path="/" component={Landing} />
         </Switch>
       </section>
       <footer>

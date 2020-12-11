@@ -13,7 +13,7 @@ footer {
   background-color: #ddd;
 }
 
-.App {
+.main {
   margin: auto 10px;
   overflow: hidden;
   padding: 15px;
@@ -22,4 +22,13 @@ footer {
   background-color: #fff;
   display: flex;
   flex-direction: column;
+}
+
+/* Layout for Desktop */
+
+@media all and (min-width: 800px) {
+  .map-result-holder {
+    display: flex;
+    flex-direction: row;
+  }
 }
