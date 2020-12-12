@@ -1,32 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import * as Nominatim from 'nominatim-browser';
+
+import SuggestionList from '../SuggestionList/SuggestionList';
 
 import './Search.css';
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState('San Francisco');
+  const [suggestions, setSuggestions] = useState([]);
+  const newSearch = useCallback(() => {
+    Nominatim.geocode({
+      q: searchTerm,
+      addressdetails: true,
+    })
+      .then((res) => setSuggestions(res));
+  }, [searchTerm]);
   const submitForm = (e) => {
     e.preventDefault();
-    // TODO
-    Nominatim.geocode({
-      q: searchTerm,
-      addressdetails: true,
-    })
-      .then((res) => console.log(res));
+    newSearch();
   };
   useEffect(() => {
-    Nominatim.geocode({
-      q: searchTerm,
-      addressdetails: true,
-    })
-      .then((res) => console.log(res));
-  }, [searchTerm]);
+    if (searchTerm.length % 2 === 0) {
+      newSearch();
+    }
+  }, [searchTerm, newSearch]);
   return (
     <form id="main-search" onSubmit={submitForm}>
       <div className="main-search-bar">
         <input id="location" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         <button id="search" type="submit">Search</button>
       </div>
+      <SuggestionList suggestions={suggestions} />
     </form>
   );
 }
