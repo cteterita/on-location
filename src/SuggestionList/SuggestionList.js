@@ -7,15 +7,18 @@ function SuggestionList(props) {
   const { suggestions } = props;
   return (
     <ul>
-      {suggestions.map((s) => <Suggestion displayName={s.display_name} />)}
+      {suggestions.map((s) => <Suggestion displayName={s.display_name} key={s.place_id} />)}
     </ul>
   );
 }
 
 SuggestionList.propTypes = {
-  suggestions: PropTypes.arrayOf({
-    display_name: PropTypes.string,
-  }),
+  suggestions: PropTypes.arrayOf(
+    PropTypes.shape({
+      display_name: PropTypes.string,
+      place_id: PropTypes.int,
+    }),
+  ),
 };
 
 SuggestionList.defaultProps = {
