@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
 import { Map } from 'pigeon-maps';
@@ -8,10 +8,7 @@ import ResultMarker from '../ResultMarker/ResultMarker';
 
 import './ResultMap.css';
 
-const sanFrancisco = {
-  lat: 37.7790262,
-  lon: -122.4199061,
-};
+const sanFrancisco = [37.7790262, -122.4199061];
 const exampleResults = [
   {
     title: 'The Joy Luck Club',
@@ -37,24 +34,29 @@ const exampleResults = [
 ];
 
 function ResultMap() {
-  // Parse the map center & zoom from the query params
-  const params = parse(useLocation().search);
-  let lon = parseFloat(params.lon);
-  let lat = parseFloat(params.lat);
-  // If the lat and lon don't make sense, just load San Francisco
-  if (Number.isNaN(lon) || Math.abs(lon) > 180 || Number.isNaN(lat) || Math.abs(lat) > 90) {
-    lon = sanFrancisco.lon;
-    lat = sanFrancisco.lat;
-  }
-  let initialZoom = parseFloat(params.zoom);
-  if (Number.isNaN(initialZoom) || initialZoom < 1 || initialZoom > 18) initialZoom = 11;
-
-  const [center, setCenter] = useState([lat, lon]);
-  const [zoom, setZoom] = useState(initialZoom);
-  const [results] = useState(exampleResults);
-
+  // Set up location/history hooks
+  const location = useLocation();
   const history = useHistory();
 
+  // Set up state hooks
+  const [center, setCenter] = useState(sanFrancisco);
+  const [zoom, setZoom] = useState(11);
+  const [results] = useState(exampleResults);
+
+  // Update the map center/zoom when the location changes
+  useEffect(() => {
+    const params = parse(location.search);
+    const lon = parseFloat(params.lon);
+    const lat = parseFloat(params.lat);
+    // Move only if the coordinates make sense
+    if (Math.abs(lat) < 90 && Math.abs(lon) < 180) {
+      setCenter([lat, lon]);
+    }
+    const initialZoom = parseFloat(params.zoom);
+    if (initialZoom >= 1 && initialZoom <= 18) setZoom(initialZoom);
+  }, [location.search]);
+
+  // Update the map & URL when the user moves it
   const updateMap = (p) => {
     setCenter(p.center);
     setZoom(p.zoom);
