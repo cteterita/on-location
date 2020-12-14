@@ -1,6 +1,5 @@
 body {
-  width: 90%;
-  max-width: 800px;
+  width: 95%;
   margin: auto;
   background-color: #aaa;
 }
@@ -26,7 +25,7 @@ footer {
 
 /* Layout for Desktop */
 
-@media all and (min-width: 800px) {
+@media all and (min-width: 1000px) {
   .map-result-holder {
     display: flex;
     flex-direction: row;
