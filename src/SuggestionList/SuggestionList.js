@@ -7,7 +7,17 @@ function SuggestionList(props) {
   const { suggestions } = props;
   return (
     <ul>
-      {suggestions.map((s) => <Suggestion displayName={s.display_name} key={s.place_id} />)}
+      {suggestions.map((s) => {
+        const { lat, lon } = s;
+        return (
+          <Suggestion
+            displayName={s.display_name}
+            lat={lat}
+            lon={lon}
+            key={s.place_id}
+          />
+        );
+      })}
     </ul>
   );
 }
