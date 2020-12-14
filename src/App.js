@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Landing from './Landing/Landing';
+import Results from './Results/Results';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       </header>
       <section className="main">
         <Switch>
+          <Route path="/results" component={Results} />
           <Route path="/" component={Landing} />
         </Switch>
       </section>

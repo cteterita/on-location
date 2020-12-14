@@ -1,0 +1,5 @@
+.result-marker {
+  position: absolute;
+  max-width: 20%;
+  background-color: red;
+}
