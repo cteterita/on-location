@@ -11,7 +11,7 @@ function Suggestion(props) {
   // TODO: Make this reload the map if you're already on the results page
   const linkTo = {
     pathname: '/results',
-    search: stringify({ lat, lon }),
+    search: stringify({ lat, lon, zoom: 11 }),
   };
   return (
     <li><Link to={linkTo}>{displayName}</Link></li>
