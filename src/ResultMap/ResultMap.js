@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+
 import { Map } from 'pigeon-maps';
+import { parse, stringify } from 'query-string';
 
 import ResultMarker from '../ResultMarker/ResultMarker';
 
 import './ResultMap.css';
 
-const sanFrancisco = [37.7790262, -122.4199061];
+const sanFrancisco = {
+  lat: 37.7790262,
+  lon: -122.4199061,
+};
 const exampleResults = [
   {
     title: 'The Joy Luck Club',
@@ -31,9 +37,36 @@ const exampleResults = [
 ];
 
 function ResultMap() {
-  const [center, setCenter] = useState(sanFrancisco);
-  const [zoom, setZoom] = useState(11);
+  // Parse the map center & zoom from the query params
+  const params = parse(useLocation().search);
+  let lon = parseFloat(params.lon);
+  let lat = parseFloat(params.lat);
+  // If the lat and lon don't make sense, just load San Francisco
+  if (Number.isNaN(lon) || Math.abs(lon) > 180 || Number.isNaN(lat) || Math.abs(lat) > 90) {
+    lon = sanFrancisco.lon;
+    lat = sanFrancisco.lat;
+  }
+  let initialZoom = parseFloat(params.zoom);
+  if (Number.isNaN(initialZoom) || initialZoom < 1 || initialZoom > 18) initialZoom = 11;
+
+  const [center, setCenter] = useState([lat, lon]);
+  const [zoom, setZoom] = useState(initialZoom);
   const [results] = useState(exampleResults);
+
+  const history = useHistory();
+
+  const updateMap = (p) => {
+    setCenter(p.center);
+    setZoom(p.zoom);
+    // Update the URL to show the current map settings, but don't push it to history
+    history.replace({
+      search: stringify({
+        lat: p.center[0],
+        lon: p.center[1],
+        zoom: p.zoom,
+      }),
+    });
+  };
 
   // TODO: Fix sizing
   return (
@@ -43,7 +76,7 @@ function ResultMap() {
         height={300}
         center={center}
         zoom={zoom}
-        onBoundsChanged={({ newCenter, newZoom }) => { setCenter(newCenter); setZoom(newZoom); }}
+        onBoundsChanged={updateMap}
       >
         {results.map((r) => <ResultMarker anchor={[r.lat, r.lon]} result={r} />)}
       </Map>
