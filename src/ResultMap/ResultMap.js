@@ -5,6 +5,7 @@ import { Map } from 'pigeon-maps';
 import { parse, stringify } from 'query-string';
 
 import ResultMarker from '../ResultMarker/ResultMarker';
+import mapTilerProvider from '../utils/mapTilerProvider';
 
 import './ResultMap.css';
 
@@ -70,7 +71,7 @@ function ResultMap() {
     });
   };
 
-  // TODO: Fix sizing
+  // TODO: Fix map sizing
   return (
     <div className="result-map">
       <Map
@@ -79,6 +80,7 @@ function ResultMap() {
         center={center}
         zoom={zoom}
         onBoundsChanged={updateMap}
+        provider={mapTilerProvider}
       >
         {results.map((r) => <ResultMarker anchor={[r.lat, r.lon]} result={r} />)}
       </Map>
