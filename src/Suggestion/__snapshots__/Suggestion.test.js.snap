@@ -2,6 +2,10 @@
 
 exports[`renders without errors 1`] = `
 <li>
-  Terrapin Crossroads
+  <a
+    href="/results?lat=1&lon=1&zoom=11"
+  >
+    Terrapin Crossroads
+  </a>
 </li>
 `;
