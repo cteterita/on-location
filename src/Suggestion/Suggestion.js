@@ -5,10 +5,9 @@ import { stringify } from 'query-string';
 
 import { Link } from 'react-router-dom';
 
-// TODO: Style this
+// TODO: Style suggestions
 function Suggestion(props) {
   const { displayName, lat, lon } = props;
-  // TODO: Make this reload the map if you're already on the results page
   const linkTo = {
     pathname: '/results',
     search: stringify({ lat, lon, zoom: 11 }),
