@@ -21,7 +21,6 @@ function Search(props) {
   const onSelect = (selection) => {
     const { lat, lon } = selection;
     history.push({
-      pathname: '/results',
       search: stringify({ lat, lon, zoom: 11 }),
     });
   };

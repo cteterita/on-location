@@ -1,20 +1,18 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
 
-import Landing from './Landing/Landing';
-import Results from './Results/Results';
+import Search from './Search/Search';
+import ResultMap from './ResultMap/ResultMap';
 
 function App() {
+  const defaultSearch = 'Search for books, movies, and TV shows to take you away to your favorite destinations.';
   return (
     <main className="app">
       <header>
         <h1>On Location</h1>
       </header>
       <section className="main">
-        <Switch>
-          <Route path="/results" component={Results} />
-          <Route path="/" component={Landing} />
-        </Switch>
+        <Search defaultSearch={defaultSearch} />
+        <ResultMap />
       </section>
       <footer>
         (c) 2020 Claire Teter Lesh - About - Send Feedback
