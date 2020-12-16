@@ -32,8 +32,8 @@ function App() {
       <section className="main">
         <Search defaultSearch={defaultSearch} onSearchSelect={onSearchSelect} />
         <ResultMap />
-        <Popup trigger={addMarkerButton} position="right center" modal>
-          <AddMarker />
+        <Popup trigger={addMarkerButton} modal>
+          {(close) => <AddMarker close={close} />}
         </Popup>
       </section>
       <footer>
