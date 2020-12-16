@@ -4,6 +4,7 @@ import Popup from 'reactjs-popup';
 
 import Search from './Search/Search';
 import ResultMap from './ResultMap/ResultMap';
+import AddMarker from './AddMarker/AddMarker';
 
 const addMarkerButton = (
   <button type="button" className="add-marker">+ Add Marker</button>
@@ -20,7 +21,7 @@ function App() {
         <Search defaultSearch={defaultSearch} />
         <ResultMap />
         <Popup trigger={addMarkerButton} position="right center" modal>
-          Popup!
+          <AddMarker />
         </Popup>
       </section>
       <footer>
