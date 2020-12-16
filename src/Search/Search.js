@@ -1,40 +1,39 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { stringify } from 'query-string';
+import AsyncSelect from 'react-select/async';
 import * as Nominatim from 'nominatim-browser';
 
-import SuggestionList from '../SuggestionList/SuggestionList';
 import './Search.css';
 
 function Search(props) {
   const { defaultSearch } = props;
+  const history = useHistory();
 
-  const [searchTerm, setSearchTerm] = useState(defaultSearch);
-  const [suggestions, setSuggestions] = useState([]);
-  const newSearch = useCallback(() => {
-    Nominatim.geocode({
-      q: searchTerm,
-      addressdetails: true,
-    })
-      .then((res) => setSuggestions(res));
-  }, [searchTerm]);
-  const submitForm = (e) => {
-    e.preventDefault();
-    newSearch();
+  // TODO: Should I be caching/rate-limiting?
+  const loadOptions = (searchTerm) => Nominatim.geocode({
+    q: searchTerm,
+    addressdetails: true,
+  })
+    .then((res) => res);
+  const onSelect = (selection) => {
+    const { lat, lon } = selection;
+    history.push({
+      pathname: '/results',
+      search: stringify({ lat, lon, zoom: 11 }),
+    });
   };
-  useEffect(() => {
-    if (searchTerm && searchTerm.length % 2 === 0) {
-      newSearch();
-    }
-  }, [searchTerm, newSearch]);
   return (
-    <form id="main-search" onSubmit={submitForm}>
-      <div className="main-search-bar">
-        <input id="location" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-        <button id="search" type="submit">Search</button>
-      </div>
-      <SuggestionList suggestions={suggestions} />
-    </form>
+    <div className="main-search-bar">
+      <AsyncSelect
+        defaultInputValue={defaultSearch}
+        loadOptions={loadOptions}
+        getOptionLabel={(o) => o.display_name}
+        onChange={onSelect}
+      />
+    </div>
   );
 }
 
