@@ -1,5 +1,7 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
+import { stringify } from 'query-string';
 import Popup from 'reactjs-popup';
 
 import Search from './Search/Search';
@@ -11,14 +13,24 @@ const addMarkerButton = (
 );
 
 function App() {
+  const history = useHistory();
+
   const defaultSearch = 'Search for books, movies, and TV shows to take you away to your favorite destinations.';
+
+  const onSearchSelect = (selection) => {
+    const { lat, lon } = selection;
+    history.push({
+      search: stringify({ lat, lon, zoom: 11 }),
+    });
+  };
+
   return (
     <main className="app">
       <header>
         <h1>On Location</h1>
       </header>
       <section className="main">
-        <Search defaultSearch={defaultSearch} />
+        <Search defaultSearch={defaultSearch} onSearchSelect={onSearchSelect} />
         <ResultMap />
         <Popup trigger={addMarkerButton} position="right center" modal>
           <AddMarker />

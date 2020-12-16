@@ -39,7 +39,7 @@ function AddMarker() {
         </label>
         <label htmlFor="type">
           Type:
-          <select id="link" value={type} onChange={(i) => setType(i.target.value)} required>
+          <select id="type" value={type} onChange={(i) => setType(i.target.value)} required>
             <option value="movie">Movie</option>
             <option value="book">Book</option>
             <option value="tv">TV Show</option>
