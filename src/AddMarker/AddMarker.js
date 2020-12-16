@@ -12,7 +12,7 @@ function AddMarker() {
 
   const [title, setTitle] = useState('');
   const [link, setLink] = useState('');
-  const [type, setType] = useState(null);
+  const [type, setType] = useState('Movie');
   // const [lat, setLat] = useState(0);
   // const [lon, setLon] = useState(0);
 
@@ -35,19 +35,19 @@ function AddMarker() {
       <form className="add-marker-form" onSubmit={handleSubmit}>
         <label htmlFor="title">
           Title:
-          <input id="title" value={title} onChange={setTitle} required />
+          <input id="title" value={title} onChange={(i) => setTitle(i.target.value)} required />
         </label>
         <label htmlFor="type">
           Type:
-          <select id="link" value={type} onChange={setType} required>
-            <option value="book">Book</option>
+          <select id="link" value={type} onChange={(i) => setType(i.target.value)} required>
             <option value="movie">Movie</option>
+            <option value="book">Book</option>
             <option value="tv">TV Show</option>
           </select>
         </label>
         <label htmlFor="link">
           Link:
-          <input id="link" value={link} onChange={setLink} required />
+          <input id="link" value={link} onChange={(i) => setLink(i.target.value)} required />
         </label>
         {/* <span>
           Location:
