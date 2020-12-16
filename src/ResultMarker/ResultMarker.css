@@ -1,5 +1,21 @@
 .result-marker {
   position: absolute;
   max-width: 20%;
+  background-color: grey;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.result-marker::before {
+  content: "\A";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
   background-color: red;
+  display: inline-block;
+}
+
+a.result-link {
+  color: white;
+  text-decoration: none;
 }

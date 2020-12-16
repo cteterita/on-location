@@ -7,7 +7,11 @@ function resultMarker(props) {
   // TODO: Style markers & implement expansion
   return (
     <div className="result-marker" style={{ left, top }}>
-      <span>{result.title}</span>
+      <span>
+        <a href={result.link} target="_blank" rel="noreferrer" className="result-link">
+          {` ${result.title} >>`}
+        </a>
+      </span>
     </div>
   );
 }
