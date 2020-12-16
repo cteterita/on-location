@@ -21,6 +21,7 @@ footer {
   background-color: #fff;
   display: flex;
   flex-direction: column;
+  min-height: 400px;
 }
 
 /* Layout for Desktop */

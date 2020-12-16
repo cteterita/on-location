@@ -78,8 +78,6 @@ function ResultMap() {
   return (
     <div className="result-map">
       <Map
-        width={800}
-        height={300}
         center={center}
         zoom={zoom}
         onBoundsChanged={updateMap}
