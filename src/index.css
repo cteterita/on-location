@@ -14,7 +14,7 @@ footer {
 
 .main {
   margin: auto 10px;
-  overflow: hidden;
+  position: relative;
   padding: 15px;
   font-size: 16px;
   line-height: 20px;
@@ -22,6 +22,18 @@ footer {
   display: flex;
   flex-direction: column;
   min-height: 400px;
+}
+
+/* Popup settings */
+button.add-marker {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  background-color: red;
+  padding: 4px;
+  font-size: 20px;
+  border-radius: 4px;
+  border: none;
 }
 
 /* Layout for Desktop */
