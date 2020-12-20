@@ -6,9 +6,9 @@ import { stringify } from 'query-string';
 
 import Search from '../Search/Search';
 
-import './AddMarker.css';
+import './AddPin.css';
 
-function AddMarker(props) {
+function AddPin(props) {
   const { close } = props;
   const history = useHistory();
 
@@ -34,9 +34,9 @@ function AddMarker(props) {
     setLon(selection.lon);
   };
   return (
-    <div className="add-marker-modal">
-      <h3>Add a new marker!</h3>
-      <form className="add-marker-form" onSubmit={handleSubmit}>
+    <div className="add-pin-modal">
+      <h3>Add a new pin!</h3>
+      <form className="add-pin-form" onSubmit={handleSubmit}>
         <label htmlFor="title">
           Title:
           <input id="title" value={title} onChange={(i) => setTitle(i.target.value)} required />
@@ -57,14 +57,14 @@ function AddMarker(props) {
           Location:
           <Search id="location" onSearchSelect={handleSearchSelect} />
         </span>
-        <button type="submit">Add Marker</button>
+        <button type="submit">Add pin</button>
       </form>
     </div>
   );
 }
 
-AddMarker.propTypes = {
+AddPin.propTypes = {
   close: PropTypes.func.isRequired,
 };
 
-export default AddMarker;
+export default AddPin;

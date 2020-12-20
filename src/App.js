@@ -6,10 +6,10 @@ import Popup from 'reactjs-popup';
 
 import Search from './Search/Search';
 import ResultMap from './ResultMap/ResultMap';
-import AddMarker from './AddMarker/AddMarker';
+import AddPin from './AddPin/AddPin';
 
-const addMarkerButton = (
-  <button type="button" className="add-marker">+ Add Marker</button>
+const AddPinButton = (
+  <button type="button" className="add-pin">+ Add pin</button>
 );
 
 function App() {
@@ -32,8 +32,8 @@ function App() {
       <section className="main">
         <Search defaultSearch={defaultSearch} onSearchSelect={onSearchSelect} />
         <ResultMap />
-        <Popup trigger={addMarkerButton} modal>
-          {(close) => <AddMarker close={close} />}
+        <Popup trigger={AddPinButton} modal>
+          {(close) => <AddPin close={close} />}
         </Popup>
       </section>
       <footer>

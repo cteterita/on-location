@@ -1,4 +1,4 @@
-.add-marker-modal {
+.add-pin-modal {
   background-color: #bbb;
   width: 300px;
   height: 200px;
@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.add-marker-form {
+.add-pin-form {
   display: flex;
   flex-direction: column;
 }

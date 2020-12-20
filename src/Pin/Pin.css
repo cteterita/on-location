@@ -1,4 +1,4 @@
-.result-marker {
+.pin {
   position: absolute;
   max-width: 20%;
   background-color: grey;
@@ -6,7 +6,7 @@
   padding: 4px;
 }
 
-.result-marker::before {
+.pin::before {
   content: "\A";
   width: 12px;
   height: 12px;
@@ -15,7 +15,7 @@
   display: inline-block;
 }
 
-a.result-link {
+a.pin-link {
   color: white;
   text-decoration: none;
 }

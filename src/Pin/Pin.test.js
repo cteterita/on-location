@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import ResultMarker from './ResultMarker';
+import Pin from './Pin';
 
 const example = {
   title: 'The Joy Luck Club',
@@ -13,7 +13,7 @@ const example = {
 };
 
 test('renders without errors', () => {
-  render(<ResultMarker result={example} />);
+  render(<Pin result={example} />);
   const linkElement = screen.getByText(/joy/i);
   expect(linkElement).toBeInTheDocument();
 });

@@ -4,7 +4,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { Map } from 'pigeon-maps';
 import { parse, stringify } from 'query-string';
 
-import ResultMarker from '../ResultMarker/ResultMarker';
+import Pin from '../Pin/Pin';
 import mapTilerProvider from '../utils/mapTilerProvider';
 
 import './ResultMap.css';
@@ -62,6 +62,7 @@ function ResultMap() {
 
   // Update the map & URL when the user moves it
   const updateMap = (p) => {
+    console.log(p);
     setCenter(p.center);
     setZoom(p.zoom);
     // Update the URL to show the current map settings, but don't push it to history
@@ -74,7 +75,6 @@ function ResultMap() {
     });
   };
 
-  // TODO: Fix map sizing
   return (
     <div className="result-map">
       <Map
@@ -83,7 +83,7 @@ function ResultMap() {
         onBoundsChanged={updateMap}
         provider={mapTilerProvider}
       >
-        {results.map((r) => <ResultMarker anchor={[r.lat, r.lon]} result={r} key={r.id} />)}
+        {results.map((r) => <Pin anchor={[r.lat, r.lon]} result={r} key={r.id} />)}
       </Map>
     </div>
   );

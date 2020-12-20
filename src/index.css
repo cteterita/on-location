@@ -25,7 +25,7 @@ footer {
 }
 
 /* Popup settings */
-button.add-marker {
+button.add-pin {
   position: absolute;
   bottom: 50px;
   right: 50px;
