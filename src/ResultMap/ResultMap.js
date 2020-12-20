@@ -12,32 +12,6 @@ import './ResultMap.css';
 import config from '../config';
 
 const sanFrancisco = [37.7790262, -122.4199061];
-const exampleResults = [
-  {
-    title: 'The Joy Luck Club',
-    type: 'book',
-    lat: 37.7790262,
-    lon: -122.4199061,
-    link: 'https://www.goodreads.com/book/show/7763.The_Joy_Luck_Club',
-    id: 1,
-  },
-  {
-    title: 'The Wild Parrots of Telegraph Hill',
-    type: 'book',
-    lat: 37.800785,
-    lon: -122.4040908,
-    link: 'https://www.goodreads.com/book/show/221682.The_Wild_Parrots_of_Telegraph_Hill?ac=1&from_search=true&qid=ygucMo2g7U&rank=1',
-    id: 2,
-  },
-  {
-    title: 'The Rock',
-    type: 'movie',
-    lat: 37.82672135,
-    lon: -122.42275899441964,
-    link: 'https://www.imdb.com/title/tt0117500/',
-    id: 3,
-  },
-];
 
 function ResultMap() {
   // Set up location/history hooks
@@ -47,7 +21,7 @@ function ResultMap() {
   // Set up state hooks
   const [center, setCenter] = useState(sanFrancisco);
   const [zoom, setZoom] = useState(11);
-  const [results, setResults] = useState(exampleResults); // TODO: Remove this default
+  const [results, setResults] = useState([]);
 
   // Update the map center/zoom when the location changes
   useEffect(() => {
@@ -93,7 +67,13 @@ function ResultMap() {
         onBoundsChanged={updateMap}
         provider={mapTilerProvider}
       >
-        {results.map((r) => <Pin anchor={[r.lat, r.lon]} result={r} key={r.id} />)}
+        {results.map((r) => (
+          <Pin
+            anchor={[r.lat, r.lon]}
+            result={r}
+            key={r.id}
+          />
+        ))}
       </Map>
     </div>
   );
