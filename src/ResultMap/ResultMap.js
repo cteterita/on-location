@@ -9,6 +9,8 @@ import mapTilerProvider from '../utils/mapTilerProvider';
 
 import './ResultMap.css';
 
+import config from '../config';
+
 const sanFrancisco = [37.7790262, -122.4199061];
 const exampleResults = [
   {
@@ -45,7 +47,7 @@ function ResultMap() {
   // Set up state hooks
   const [center, setCenter] = useState(sanFrancisco);
   const [zoom, setZoom] = useState(11);
-  const [results] = useState(exampleResults);
+  const [results, setResults] = useState(exampleResults); // TODO: Remove this default
 
   // Update the map center/zoom when the location changes
   useEffect(() => {
@@ -60,11 +62,19 @@ function ResultMap() {
     if (initialZoom >= 1 && initialZoom <= 18) setZoom(initialZoom);
   }, [location.search]);
 
+  function updatePins(ne, sw) {
+    fetch(`${config.SERVER_URL}/pins?ne=${ne}&sw=${sw}`)
+      .then((res) => res.json())
+      .then((pins) => setResults(pins))
+      .catch(); // TODO: Error handling
+  }
+
   // Update the map & URL when the user moves it
   const updateMap = (p) => {
-    console.log(p);
     setCenter(p.center);
     setZoom(p.zoom);
+    // Fetch pins in the bounds of the map
+    updatePins(p.bounds.ne, p.bounds.sw);
     // Update the URL to show the current map settings, but don't push it to history
     history.replace({
       search: stringify({
