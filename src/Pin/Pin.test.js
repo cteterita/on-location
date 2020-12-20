@@ -13,7 +13,7 @@ const example = {
 };
 
 test('renders without errors', () => {
-  render(<Pin result={example} />);
+  render(<Pin result={example} top={0} left={0} />);
   const linkElement = screen.getByText(/joy/i);
   expect(linkElement).toBeInTheDocument();
 });
