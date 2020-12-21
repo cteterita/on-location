@@ -5,7 +5,6 @@ import './Pin.css';
 
 function Pin(props) {
   const { result, left, top } = props;
-  // TODO: Style pins & implement expansion
   return (
     <div className="pin" style={{ left, top }}>
       <span>

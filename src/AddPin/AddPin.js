@@ -14,13 +14,19 @@ function AddPin(props) {
   const history = useHistory();
 
   const [title, setTitle] = useState('');
-  const [link, setLink] = useState('');
+  const [link, setLink] = useState('http://');
   const [media, setMedia] = useState('movie');
-  const [lat, setLat] = useState(0);
-  const [lon, setLon] = useState(0);
+  const [lat, setLat] = useState(null);
+  const [lon, setLon] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Do some light data validation before constructing the pin object
+    if (!lat || !lon) {
+      setError('Invalid location.');
+      return;
+    }
     const pin = {
       title,
       media,
@@ -28,19 +34,27 @@ function AddPin(props) {
       lat,
       lon,
     };
-    // TODO: Data validation
     fetch(`${config.SERVER_URL}/pins`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify(pin),
-    });
-    // TODO: feedback & error handling
-    history.push({
-      search: stringify({ lat, lon, zoom: 11 }),
-    });
-    close();
+    })
+      .then((response) => {
+        if (!response.ok) {
+          // Handle errors returned by the API
+          throw response;
+        }
+        history.push({
+          search: stringify({ lat, lon, zoom: 11 }),
+        });
+        close();
+      })
+      .catch((err) => {
+        err.text()
+          .then((text) => setError(text));
+      });
   };
   const handleSearchSelect = (selection) => {
     setLat(selection.lat);
@@ -70,6 +84,7 @@ function AddPin(props) {
           Location:
           <Search id="location" onSearchSelect={handleSearchSelect} />
         </span>
+        <span>{error}</span>
         <button type="submit">Add pin</button>
       </form>
     </div>
