@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import { stringify } from 'query-string';
 
@@ -9,8 +8,7 @@ import config from '../config';
 
 import './AddPin.css';
 
-function AddPin(props) {
-  const { close } = props;
+function AddPin() {
   const history = useHistory();
 
   const [title, setTitle] = useState('');
@@ -49,7 +47,6 @@ function AddPin(props) {
         history.push({
           search: stringify({ lat, lon, zoom: 11 }),
         });
-        close();
       })
       .catch((err) => {
         err.text()
@@ -62,12 +59,8 @@ function AddPin(props) {
   };
   return (
     <div className="add-pin-modal">
-      <h3>Add a new pin!</h3>
+      <span><b>Have a title to contribute to the map? Add a pin for it!</b></span>
       <form className="add-pin-form" onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          Title:
-          <input id="title" value={title} onChange={(i) => setTitle(i.target.value)} required />
-        </label>
         <label htmlFor="media">
           Type:
           <select id="media" onChange={(i) => setMedia(i.target.value)} required>
@@ -76,12 +69,16 @@ function AddPin(props) {
             <option value="tv_show">TV Show</option>
           </select>
         </label>
+        <label htmlFor="title">
+          Title:
+          <input id="title" value={title} onChange={(i) => setTitle(i.target.value)} required />
+        </label>
         <label htmlFor="link">
           Link:
           <input id="link" value={link} onChange={(i) => setLink(i.target.value)} required />
         </label>
         <span>
-          Location:
+          Primary Setting or Location (can be as general as a city or as specific as an address):
           <Search id="location" onSearchSelect={handleSearchSelect} />
         </span>
         <span>{error}</span>
@@ -90,9 +87,5 @@ function AddPin(props) {
     </div>
   );
 }
-
-AddPin.propTypes = {
-  close: PropTypes.func.isRequired,
-};
 
 export default AddPin;

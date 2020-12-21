@@ -1,13 +1,8 @@
 .add-pin-modal {
-  background-color: #bbb;
-  width: 300px;
-  height: 200px;
-  padding: 10px;
+  background-color: lightblue;
   border-radius: 4px;
-}
-
-.popup-overlay {
-  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  margin: 10px 0;
 }
 
 .add-pin-form {
