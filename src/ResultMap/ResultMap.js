@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 
 import { Map } from 'pigeon-maps';
 import { parse, stringify } from 'query-string';
 
+import Search from '../Search/Search';
 import Pin from '../Pin/Pin';
 import mapTilerProvider from '../utils/mapTilerProvider';
 
@@ -59,23 +60,38 @@ function ResultMap() {
     });
   };
 
+  const defaultSearch = 'Search by location to view books, movies, and TV shows on the map';
+
+  const onSearchSelect = (selection) => {
+    const { lat, lon } = selection;
+    history.push({
+      search: stringify({ lat, lon, zoom: 11 }),
+    });
+  };
+
   return (
-    <div className="result-map">
-      <Map
-        center={center}
-        zoom={zoom}
-        onBoundsChanged={updateMap}
-        provider={mapTilerProvider}
-      >
-        {results.map((r) => (
-          <Pin
-            anchor={[r.lat, r.lon]}
-            result={r}
-            key={r.id}
-          />
-        ))}
-      </Map>
-    </div>
+    <>
+      <Search defaultSearch={defaultSearch} onSearchSelect={onSearchSelect} />
+      <div className="result-map">
+        <Map
+          center={center}
+          zoom={zoom}
+          onBoundsChanged={updateMap}
+          provider={mapTilerProvider}
+        >
+          {results.map((r) => (
+            <Pin
+              anchor={[r.lat, r.lon]}
+              result={r}
+              key={r.id}
+            />
+          ))}
+        </Map>
+      </div>
+      <Link to="/add">
+        <button type="button" className="add-pin">+ Add Pin</button>
+      </Link>
+    </>
   );
 }
 
