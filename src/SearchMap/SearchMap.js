@@ -8,13 +8,13 @@ import Search from '../Search/Search';
 import Pin from '../Pin/Pin';
 import mapTilerProvider from '../utils/mapTilerProvider';
 
-import './ResultMap.css';
+import './SearchMap.css';
 
 import config from '../config';
 
 const sanFrancisco = [37.7790262, -122.4199061];
 
-function ResultMap() {
+function SearchMap() {
   // Set up location/history hooks
   const location = useLocation();
   const history = useHistory();
@@ -95,4 +95,4 @@ function ResultMap() {
   );
 }
 
-export default ResultMap;
+export default SearchMap;

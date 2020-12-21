@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import ResultMap from './ResultMap/ResultMap';
+import SearchMap from './SearchMap/SearchMap';
 import AddPin from './AddPin/AddPin';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <section className="main">
         <Switch>
           <Route path="/add" component={AddPin} />
-          <Route path="/" component={ResultMap} />
+          <Route path="/" component={SearchMap} />
         </Switch>
       </section>
       <footer>
