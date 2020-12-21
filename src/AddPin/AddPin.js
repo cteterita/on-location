@@ -59,7 +59,7 @@ function AddPin() {
     setLon(selection.lon);
   };
   return (
-    <div className="add-pin-modal">
+    <div>
       <span><b>Have a title to contribute to the map? Add a pin for it!</b></span>
       <form className="add-pin-form" onSubmit={handleSubmit}>
         <label htmlFor="media">
