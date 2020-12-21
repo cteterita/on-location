@@ -1,5 +1,7 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import {
+  Route, Switch, Link, useHistory,
+} from 'react-router-dom';
 
 import { stringify } from 'query-string';
 
@@ -19,6 +21,18 @@ function App() {
     });
   };
 
+  function searchWithMap() {
+    return (
+      <>
+        <Search defaultSearch={defaultSearch} onSearchSelect={onSearchSelect} />
+        <ResultMap />
+        <Link to="/add">
+          <button type="button" className="add-pin">+ Add Pin</button>
+        </Link>
+      </>
+    );
+  }
+
   return (
     <main className="app">
       <header>
@@ -26,9 +40,10 @@ function App() {
         <h3>Find books, movies, and TV shows to take you away to your favorite destinations.</h3>
       </header>
       <section className="main">
-        <Search defaultSearch={defaultSearch} onSearchSelect={onSearchSelect} />
-        <ResultMap />
-        <AddPin />
+        <Switch>
+          <Route path="/add" component={AddPin} />
+          <Route path="/" component={searchWithMap} />
+        </Switch>
       </section>
       <footer>
         (c) 2020 Claire Teter Lesh
