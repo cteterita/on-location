@@ -33,7 +33,7 @@ Search.propTypes = {
 };
 
 Search.defaultProps = {
-  defaultSearch: '',
+  defaultSearch: 'Type to search for a location',
 };
 
 export default Search;
