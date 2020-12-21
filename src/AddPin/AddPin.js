@@ -45,6 +45,7 @@ function AddPin() {
           throw response;
         }
         history.push({
+          pathname: '/',
           search: stringify({ lat, lon, zoom: 11 }),
         });
       })
