@@ -18,10 +18,12 @@ function Search(props) {
   return (
     <div className="main-search-bar">
       <AsyncSelect
-        defaultInputValue={defaultSearch}
+        aria-label="Type to select a location"
+        placeholder={defaultSearch}
         loadOptions={loadOptions}
         getOptionLabel={(o) => o.display_name}
         onChange={onSearchSelect}
+        loadingMessage={() => 'Searching for locations...'}
       />
     </div>
   );
