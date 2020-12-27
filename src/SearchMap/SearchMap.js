@@ -23,6 +23,12 @@ function SearchMap() {
   const [center, setCenter] = useState(sanFrancisco);
   const [zoom, setZoom] = useState(11);
   const [results, setResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [mediaFilter, setMediaFilter] = useState({
+    movie: true,
+    book: true,
+    tv_show: true,
+  });
 
   // Update the map center/zoom when the location changes
   useEffect(() => {
@@ -69,6 +75,16 @@ function SearchMap() {
     });
   };
 
+  const updateFilters = (e) => {
+    const newFilter = { ...mediaFilter };
+    newFilter[e.target.id] = e.target.checked;
+    setMediaFilter(newFilter);
+  };
+
+  useEffect(() => {
+    setFilteredResults(results.filter((pin) => mediaFilter[pin.media]));
+  }, [results, mediaFilter]);
+
   return (
     <>
       <Search defaultSearch={defaultSearch} onSearchSelect={onSearchSelect} />
@@ -79,7 +95,7 @@ function SearchMap() {
           onBoundsChanged={updateMap}
           provider={mapTilerProvider}
         >
-          {results.map((r) => (
+          {filteredResults.map((r) => (
             <Pin
               anchor={[r.lat, r.lon]}
               result={r}
@@ -91,6 +107,35 @@ function SearchMap() {
       <Link to="/add">
         <button type="button" className="add-pin">+ Add Pin</button>
       </Link>
+      <div className="map-legend">
+        <label htmlFor="movie" className="legend-label movie">
+          <input
+            type="checkbox"
+            id="movie"
+            defaultChecked={mediaFilter.movie}
+            onChange={updateFilters}
+          />
+          Movies
+        </label>
+        <label htmlFor="book" className="legend-label book">
+          <input
+            type="checkbox"
+            id="book"
+            defaultChecked={mediaFilter.book}
+            onChange={updateFilters}
+          />
+          Books
+        </label>
+        <label htmlFor="tv_show" className="legend-label tv_show">
+          <input
+            type="checkbox"
+            id="tv_show"
+            defaultChecked={mediaFilter.tv_show}
+            onChange={updateFilters}
+          />
+          TV Shows
+        </label>
+      </div>
     </>
   );
 }

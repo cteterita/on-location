@@ -15,3 +15,20 @@ button.add-pin {
   border-radius: 4px;
   border: none;
 }
+
+.map-legend {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+}
+
+.legend-label {
+  border-radius: 4px;
+  padding: 2px;
+  margin: 2px;
+  color: white;
+}
