@@ -18,7 +18,8 @@ function App() {
         </Switch>
       </section>
       <footer>
-        (c) 2020 Claire Teter Lesh
+        Copyright 2020,&nbsp;
+        <a href="https://cteterita.github.io/portfolio/" target="_blank" rel="noreferrer">Claire Teter Lesh</a>
       </footer>
     </main>
   );
