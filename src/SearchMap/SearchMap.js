@@ -66,7 +66,7 @@ function SearchMap() {
     });
   };
 
-  const defaultSearch = 'Search by location to view books, movies, and TV shows on the map';
+  const defaultSearch = 'Type to search by location to view books, movies, and TV shows on the map';
 
   const onSearchSelect = (selection) => {
     const { lat, lon } = selection;
