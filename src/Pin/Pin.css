@@ -18,3 +18,15 @@
 a.pin-link {
   text-decoration: none;
 }
+
+.movie {
+  background-color: var(--dark-sienna);
+}
+
+.book {
+  background-color: var(--prussian-blue);
+}
+
+.tv_show {
+  background-color: var(--rifle-green);
+}
