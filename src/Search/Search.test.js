@@ -5,5 +5,5 @@ import Search from './Search';
 
 test('renders without errors', () => {
   render(<Search defaultSearch="default" onSearchSelect={() => true} />);
-  expect(screen.getByRole('textbox')).toHaveValue('default');
+  expect(screen.getByRole('textbox')).toBeInTheDocument();
 });
