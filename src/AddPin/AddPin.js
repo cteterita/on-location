@@ -60,7 +60,7 @@ function AddPin() {
   };
   return (
     <div>
-      <span><b>Have a title to contribute to the map? Add a pin for it!</b></span>
+      <h3>Have a title to contribute to the map? Add a pin for it!</h3>
       <form className="add-pin-form" onSubmit={handleSubmit}>
         <label htmlFor="media">
           Type:
@@ -78,12 +78,12 @@ function AddPin() {
           Link:
           <input id="link" value={link} onChange={(i) => setLink(i.target.value)} required />
         </label>
-        <span>
+        <div className="fake-label">
           Primary Setting or Location (can be as general as a city or as specific as an address):
           <Search id="location" onSearchSelect={handleSearchSelect} />
-        </span>
-        <span>{error}</span>
+        </div>
         <button type="submit">Add pin</button>
+        <span className="error-message" hidden={!error}>{error}</span>
       </form>
     </div>
   );
