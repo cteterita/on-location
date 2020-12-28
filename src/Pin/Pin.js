@@ -23,8 +23,13 @@ Pin.propTypes = {
     link: PropTypes.string,
     media: PropTypes.string,
   }).isRequired,
-  top: PropTypes.number.isRequired,
-  left: PropTypes.number.isRequired,
+  top: PropTypes.number,
+  left: PropTypes.number,
+};
+
+Pin.defaultProps = {
+  top: 0,
+  left: 0,
 };
 
 export default Pin;
