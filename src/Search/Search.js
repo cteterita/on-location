@@ -6,6 +6,12 @@ import * as Nominatim from 'nominatim-browser';
 
 import './Search.css';
 
+const defaultOptions = [
+  {
+    display_name: 'Type to search by location',
+  },
+];
+
 function Search(props) {
   const { defaultSearch, onSearchSelect } = props;
 
@@ -24,6 +30,7 @@ function Search(props) {
         getOptionLabel={(o) => o.display_name}
         onChange={onSearchSelect}
         loadingMessage={() => 'Searching for locations...'}
+        defaultOptions={defaultOptions}
       />
     </div>
   );

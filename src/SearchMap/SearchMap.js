@@ -14,6 +14,8 @@ import config from '../config';
 
 const sanFrancisco = [37.7790262, -122.4199061];
 
+const defaultSearch = 'Search by location to view media on the map';
+
 function SearchMap() {
   // Set up location/history hooks
   const location = useLocation();
@@ -65,8 +67,6 @@ function SearchMap() {
       }),
     });
   };
-
-  const defaultSearch = 'Type to search by location to view books, movies, and TV shows on the map';
 
   const onSearchSelect = (selection) => {
     const { lat, lon } = selection;
